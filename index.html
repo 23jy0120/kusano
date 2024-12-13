@@ -84,6 +84,25 @@
         .item-value {
             color: #333; /* 通常の文字色 */
         }
+
+        /* メディアクエリ */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column; /* 縦並びにする */
+                align-items: flex-start; /* 左寄せ */
+            }
+            nav {
+                flex-direction: column; /* 縦並びにする */
+                gap: 10px; /* ギャップを小さく */
+                width: 100%; /* 幅を100%に */
+                margin-top: 10px; /* 上部のマージン */
+            }
+            nav a {
+                padding: 10px; /* パディングを追加 */
+                width: 100%; /* 幅を100%にして押しやすくする */
+                text-align: center; /* 中央揃え */
+            }
+        }
     </style>
 </head>
 <body>
@@ -97,7 +116,7 @@
     </header>
     <div class="main-content">
         <div class="image-placeholder">
-            <img src="living_room.jpg" alt="リビングの画像">
+            <img src="img/heya.jpg" alt="リビングの画像">
         </div>
         <div class="catchphrase">最高のサポートを見つけよう</div>
     </div>
@@ -117,13 +136,13 @@
         <p class="item-value">9:00-18:00</p>
         <div class="divider-thin"></div>
         <p class="item-title">定休日</p>
-        <p class="item-value">火曜日と水曜日</p>
+        <p class="item-value">水曜日</p>
         <div class="divider-thin"></div>
-        <p class="item-title">業務内容:</p>
-        <ul class="item-value">
-            <li>不動産の売買、賃貸、管理、並びに仲介、斡旋</li>
-            <li>不動産に関するコンサルティング業務</li>
-        </ul>
+        <p class="item-title">業務内容</p>
+        <p class="item-value">
+            <p>不動産の売買、賃貸、管理、並びに仲介、斡旋</p>
+            <p>不動産に関するコンサルティング業務</p>
+        </p>
         <div class="divider-thin"></div>
         <p class="item-title">アクセス</p>
         <p class="item-value">六本木駅6番出口から徒歩1分</p>
