@@ -16,13 +16,27 @@
             background-color: #fff;
             padding: 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start; /* 左寄せ */
             align-items: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
         }
         h1 {
             color: #4CAF50; /* 緑色 */
-            margin: 0;
+            margin: 0 20px; /* 左右のマージンを追加 */
+        }
+        .menu-toggle {
+            display: none; /* デフォルトでは非表示 */
+            flex-direction: column;
+            cursor: pointer;
+            margin-right: 20px; /* ナビゲーションとの隙間 */
+        }
+        .bar {
+            height: 3px;
+            width: 25px;
+            background-color: #4CAF50;
+            margin: 4px 0;
+            transition: 0.4s;
         }
         nav {
             display: flex;
@@ -87,28 +101,37 @@
 
         /* メディアクエリ */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column; /* 縦並びにする */
-                align-items: flex-start; /* 左寄せ */
+            .menu-toggle {
+                display: flex; /* 小さい画面で表示 */
             }
             nav {
+                display: none; /* 初期状態では非表示 */
                 flex-direction: column; /* 縦並びにする */
-                gap: 10px; /* ギャップを小さく */
-                width: 100%; /* 幅を100%に */
-                margin-top: 10px; /* 上部のマージン */
+                position: absolute; /* 絶対配置 */
+                top: 70px; /* ヘッダーの下に表示 */
+                left: 20px; /* 左寄せ */
+                background-color: white; /* 背景色 */
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 影を追加 */
+                width: 200px; /* 幅を設定 */
+                z-index: 1; /* 重なり順を設定 */
             }
             nav a {
                 padding: 10px; /* パディングを追加 */
-                width: 100%; /* 幅を100%にして押しやすくする */
                 text-align: center; /* 中央揃え */
+                width: 100%; /* 幅を100%に */
             }
         }
     </style>
 </head>
 <body>
     <header>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
         <h1>LifeSupport</h1>
-        <nav>
+        <nav class="nav-menu" id="navMenu">
             <a href="#">アクセス</a>
             <a href="#">よくある情報</a>
             <a href="#">採用情報</a>
@@ -147,5 +170,12 @@
         <p class="item-title">アクセス</p>
         <p class="item-value">六本木駅6番出口から徒歩1分</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
 </body>
 </html>
